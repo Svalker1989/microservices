@@ -1,3 +1,4 @@
+version: "3.0"
 volumes:
   data:
   prometheus-data:
@@ -6,6 +7,7 @@ volumes:
 services:
   storage:
     image: minio/minio:latest
+    hostname: storage
     command: server /data
     restart: always
     expose: 
@@ -40,6 +42,7 @@ services:
     depends_on:
       - storage
       - createbuckets
+    hostname: uploader
     expose: 
       - 3000
     environment:
@@ -52,6 +55,7 @@ services:
   
   security:
     build: ./security
+    hostname: security
     expose: 
       - 3000
     environment:

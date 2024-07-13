@@ -17,6 +17,18 @@ data = {
 def status():
     return {'status':'OK'}
 
+@server.route('/v1/user', methods=['POST'])
+def user():
+    if not request.json or not 'login' in request.json or not 'password' in request.json:
+        return make_response(jsonify({'error':'Bad request'})), 400
+    
+    login = request.json['login']
+    password = request.json['password']
+
+    data[login] = pbkdf2_sha256.hash(password)
+    
+    return login   
+
 @server.route('/v1/token', methods=['POST'])
 def login():
     if not request.json or not 'login' in request.json or not 'password' in request.json:
