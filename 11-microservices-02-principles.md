@@ -65,7 +65,7 @@ Kafka, RabbitMQ
 
 ### Необходимо воспользоваться любым балансировщиком и сделать API Gateway:
 Конфиг nginx со всеми редиректами:   
-[nginx.conf]()  
+[nginx.conf](https://github.com/Svalker1989/microservices/blob/main/11-microservices-02-principles/gateway/nginx.conf)  
   
 **POST /v1/register**
 1. Анонимный доступ.
