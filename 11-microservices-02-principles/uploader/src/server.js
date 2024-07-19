@@ -20,7 +20,7 @@ const app = express(),
 app.disable("etag");
 app.use(
   metrics({
-    metricsPath: "/metrics",
+    metricsPath: "/uploader/metrics",
     collectDefaultMetrics: true,
     normalizeStatus: false,
     requestDurationBuckets: [0.1, 0.5, 1, 1.5, 2],
